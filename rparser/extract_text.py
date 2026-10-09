@@ -34,8 +34,13 @@ def extract_text(file_bytes: bytes, filename: str) -> tuple[str, dict]:
                 text += "\n" + " ".join(c.text for c in row.cells)
 
     elif ext in ("png", "jpg", "jpeg"):
+        from PIL import ImageOps
         info["ocr_used"] = True
-        text = pytesseract.image_to_string(Image.open(io.BytesIO(file_bytes)))
+        img = Image.open(io.BytesIO(file_bytes)).convert("L")
+        img = ImageOps.autocontrast(img)
+        text = pytesseract.image_to_string(img)
+        text += "\n" + pytesseract.image_to_string(ImageOps.invert(img))  # catches white-on-dark text
+        text = text.encode("ascii", "ignore").decode()  # drop stray OCR symbols
 
     else:  # txt
         text = file_bytes.decode("utf-8", errors="ignore")

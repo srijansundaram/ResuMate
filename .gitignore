@@ -5,3 +5,4 @@ resumes.db
 *.pdf
 .env
 models/
+*.jpg

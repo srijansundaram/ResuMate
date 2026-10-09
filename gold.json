@@ -1,0 +1,18 @@
+[
+  {"file": "resumes/Siddhant_Sinha_Resume.pdf", "name": "Siddhant Sinha", "email": "siddhantsinhaaaa@gmail.com",
+   "skills": ["AWS","C++","CI/CD","CSS","Deep Learning","Docker","FastAPI","Git","HTML","Java","JavaScript","Linux","Machine Learning","MongoDB","NLP","Node.js","NumPy","Pandas","PyTorch","Python","REST API","React","SQL","TensorFlow","scikit-learn"]},
+  {"file": "resumes/Jithesh_Shetty_Resume.pdf", "name": "Jithesh Shetty", "email": "shettyjithesh41@gmail.com",
+   "skills": ["CSS","Data Visualization","Deep Learning","FastAPI","Flask","Git","HTML","JavaScript","Machine Learning","NLP","NumPy","Pandas","PyTorch","Python","REST API","SQL","TensorFlow","scikit-learn"]},
+  {"file": "resumes/Srijan_Sundaram_Resume.pdf", "name": "Srijan Sundaram", "email": "srijansundram@gmail.com",
+   "skills": ["AWS","CSS","Computer Vision","Data Visualization","Deep Learning","Docker","FastAPI","Flask","GCP","Git","HTML","Java","JavaScript","Machine Learning","Node.js","NumPy","Pandas","PyTorch","Python","R","REST API","SQL","TensorFlow","scikit-learn"]},
+  {"file": "resumes/Anubhav_REsume.pdf", "name": "Anubhav Singh", "email": "xprilion@gmail.com",
+   "skills": ["AWS","Azure","C++","CSS","Computer Vision","Deep Learning","Django","Docker","Flask","GCP","Git","HTML","Java","JavaScript","Kubernetes","Leadership","Linux","Machine Learning","NLP","Node.js","Python","REST API","SQL","TensorFlow"]},
+  {"file": "resumes/Blessica_Juan_Resume.jpg", "name": "Blessica Juan", "email": "alldesignsworld@gmail.com",
+   "skills": []},
+  {"file": "resumes/Ajmal_Saharan_PK_Resume.jpg", "name": "Ajmal Shahran Pk", "email": "ajmalsharan@icloud.com",
+   "skills": ["Leadership","Problem Solving"]},
+  {"file": "resumes/Savita_Kumari_Resume.jpg", "name": "Savita Kumari", "email": "savita.kumari@gmail.com",
+   "skills": ["CSS","Communication","HTML","JavaScript","Problem Solving","Python","Teamwork", "Excel"]},
+  {"file": "resumes/resume.jpg", "name": "Aishwarya Patil", "email": "aish@gmail.com",
+   "skills": ["Communication","Excel","Problem Solving","Teamwork"]}
+]

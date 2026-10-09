@@ -1,18 +1,29 @@
 import json
 import sys
 from rparser.pipeline import parse_resume
+from rparser.skills import normalize
 
-# gold.json: [{"file": "resumes/a.pdf", "skills": ["Python", "SQL"], "email": "a@b.com"}, ...]
 gold = json.load(open(sys.argv[1]))
-tp = fp = fn = 0
-email_ok = 0
-for g in gold:
-    pred = parse_resume(open(g["file"], "rb").read(), g["file"])
-    P, G = {s.lower() for s in pred["skills"]}, {s.lower() for s in g["skills"]}
-    tp += len(P & G); fp += len(P - G); fn += len(G - P)
-    email_ok += pred["email"] == g.get("email")
+norm = lambda items: {normalize(s).lower() for s in items}
+groups = {}
 
-p = tp / (tp + fp) if tp + fp else 0
-r = tp / (tp + fn) if tp + fn else 0
-print(f"Skills  P={p:.2f}  R={r:.2f}  F1={2*p*r/(p+r) if p+r else 0:.2f}")
-print(f"Email accuracy = {email_ok/len(gold):.2f}")
+for g in gold:
+    r = parse_resume(open(g["file"], "rb").read(), g["file"])
+    P, G = norm(r["skills"]), norm(g["skills"])
+    key = "Scanned/JPG (OCR)" if g["file"].lower().endswith((".jpg", ".jpeg", ".png")) else "Text PDF"
+    for k in (key, "Overall"):
+        s = groups.setdefault(k, dict(tp=0, fp=0, fn=0, name=0, email=0, n=0))
+        s["tp"] += len(P & G); s["fp"] += len(P - G); s["fn"] += len(G - P)
+        s["name"] += (r["name"] or "").lower() == (g["name"] or "").lower()
+        s["email"] += (r["email"] or "").lower() == (g["email"] or "").lower()
+        s["n"] += 1
+    print(f"{g['file']}\n   extra={sorted(P - G)}  missed={sorted(G - P)}"
+          f"  name={r['name']!r}  email={r['email']!r}")
+
+print()
+for k, s in groups.items():
+    p = s["tp"] / (s["tp"] + s["fp"]) if s["tp"] + s["fp"] else 0
+    rc = s["tp"] / (s["tp"] + s["fn"]) if s["tp"] + s["fn"] else 0
+    f1 = 2 * p * rc / (p + rc) if p + rc else 0
+    print(f"{k:18} N={s['n']}  P={p:.2f} R={rc:.2f} F1={f1:.2f}  "
+          f"Name={s['name']}/{s['n']}  Email={s['email']}/{s['n']}")

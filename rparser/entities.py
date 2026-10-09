@@ -1,5 +1,6 @@
 import re
 import spacy
+from .skills import extract_skills
 
 try:
     # swap in your custom-trained model here: spacy.load("models/resume_ner")
@@ -20,9 +21,16 @@ YEAR = re.compile(r"\b(19|20)\d{2}\b")
 
 
 def extract_name(text: str) -> str | None:
-    for line in text.splitlines()[:6]:
+    BAD = {"skills", "skils", "communication", "contact", "languages", "education", "projects",
+           "personal", "details", "summary", "professional", "fresher", "interests",
+           "certifications", "technical", "soft", "objective", "experience",
+           "management", "time", "basic", "computer", "knowledge", "office"}
+    for line in text.splitlines()[:40]:
         line = line.strip()
         words = line.split()
+        if any(w.lower().strip(".,:") in BAD for w in words) or extract_skills(line):
+            continue
+        ...
         if 2 <= len(words) <= 4 and all(w.replace(".", "").replace("-", "").isalpha() for w in words):
             return line.title()
     if NLP:
