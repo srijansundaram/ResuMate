@@ -6,3 +6,5 @@ resumes.db
 .env
 models/
 *.jpg
+ResuMate-An-NLP-Based-Resume-Parser-and-Analyzer.pptx
+.gitignore

@@ -156,6 +156,11 @@ docker run -p 8501:8501 resumate
 
 ## 🧠 How It Works
 
+![ResuMate architecture](ResuMate_Architecutre.png)
+
+<details>
+<summary>Text version of the pipeline</summary>
+
 ```
 Resume file (PDF / DOCX / TXT / image)
    ▼
@@ -170,8 +175,7 @@ Skill extraction         Experience parsing
                          ▼
               SQLite ─► Dashboard / API / PDF report
 ```
-
----
+</details>
 
 ## 📊 Evaluation
 
