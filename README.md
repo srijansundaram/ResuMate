@@ -1,8 +1,8 @@
 # 📄 ResuMate: Resume Parser & Analyzer
 
 An NLP-based resume parsing system with a recruiter/candidate dashboard, job matching, ATS scoring, PDF reports and an LLM comparison. Built with Python, spaCy, scikit-learn, Sentence-BERT, Streamlit and FastAPI.
-
-**Live demo:** _add link after deployment_ · **Author:** [Srijan Sundaram](https://github.com/srijansundaram)
+ 
+**Author:** [Srijan Sundaram](https://github.com/srijansundaram)
 
 
 ---
